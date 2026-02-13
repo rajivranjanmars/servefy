@@ -1,0 +1,38 @@
+{
+  "name": "@survey/worker",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:remote": "wrangler dev --remote",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "typecheck": "tsc --noEmit",
+    "types:generate": "wrangler types",
+    "types:check": "wrangler types --check",
+    "check": "wrangler check",
+    "tail": "wrangler tail",
+    "tail:staging": "wrangler tail --env staging",
+    "tail:production": "wrangler tail --env production"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.721.0",
+    "@better-auth/expo": "^1.1.8",
+    "@survey/database": "workspace:*",
+    "@survey/types": "workspace:*",
+    "aws4fetch": "^1.0.20",
+    "better-auth": "^1.1.8",
+    "drizzle-orm": "^0.38.3",
+    "hono": "^4.6.15",
+    "nanoid": "^5.0.9",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.12.12",
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.9",
+    "wrangler": "^3.100.0"
+  }
+}

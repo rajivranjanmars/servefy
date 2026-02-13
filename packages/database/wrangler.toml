@@ -1,0 +1,9 @@
+name = "survey-database"
+main = "src/index.ts"
+compatibility_date = "2024-12-18"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "survey-db"
+database_id = "7608ade8-cf17-4a52-8ef5-b8fe079034b5"
+migrations_dir = "./src/migrations"

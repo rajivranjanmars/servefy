@@ -1,0 +1,78 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "survey-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01",
+  "compatibility_flags": ["nodejs_compat_v2"],
+
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "survey-db",
+      "database_id": "7608ade8-cf17-4a52-8ef5-b8fe079034b5",
+      "migrations_dir": "../../packages/database/src/migrations"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "STORAGE",
+      "bucket_name": "survey-files",
+      "preview_bucket_name": "survey-files-preview"
+    }
+  ],
+
+  "vars": {
+    "ENVIRONMENT": "development"
+  },
+
+  "env": {
+    "staging": {
+      "name": "survey-api-staging",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "survey-db",
+          "database_id": "7608ade8-cf17-4a52-8ef5-b8fe079034b5",
+          "migrations_dir": "../../packages/database/src/migrations"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "STORAGE",
+          "bucket_name": "survey-files",
+          "preview_bucket_name": "survey-files-preview"
+        }
+      ],
+      "vars": {
+        "ENVIRONMENT": "staging"
+      }
+    },
+    "production": {
+      "name": "survey-api-production",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "survey-db",
+          "database_id": "7608ade8-cf17-4a52-8ef5-b8fe079034b5",
+          "migrations_dir": "../../packages/database/src/migrations"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "STORAGE",
+          "bucket_name": "survey-files",
+          "preview_bucket_name": "survey-files-preview"
+        }
+      ],
+      "vars": {
+        "ENVIRONMENT": "production"
+      }
+    }
+  }
+}

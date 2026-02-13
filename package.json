@@ -1,0 +1,23 @@
+{
+  "name": "survey-platform",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "db:generate": "cd packages/database && drizzle-kit generate",
+    "db:migrate": "cd packages/database && wrangler d1 migrations apply survey-db --local",
+    "db:migrate:prod": "cd packages/database && wrangler d1 migrations apply survey-db",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

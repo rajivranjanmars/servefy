@@ -1,0 +1,322 @@
+/* Import distinctive fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties - Vibrant Neon Pop Palette */
+:root {
+  /* Core neon colors */
+  --neon-pink: #FF2D92;
+  --neon-cyan: #00F0FF;
+  --neon-lime: #B8FF00;
+  --neon-orange: #FF6B2C;
+  --neon-violet: #9B5DE5;
+  --neon-yellow: #FFE66D;
+  
+  /* Deep backgrounds */
+  --deep-black: #0A0A0B;
+  --deep-purple: #1A0A2E;
+  --deep-blue: #0A1628;
+  --deep-slate: #121218;
+  
+  /* Gradient meshes */
+  --gradient-vivid: linear-gradient(135deg, #FF2D92 0%, #9B5DE5 25%, #00F0FF 50%, #B8FF00 75%, #FF6B2C 100%);
+  --gradient-sunset: linear-gradient(135deg, #FF2D92 0%, #FF6B2C 50%, #FFE66D 100%);
+  --gradient-ocean: linear-gradient(135deg, #9B5DE5 0%, #00F0FF 50%, #B8FF00 100%);
+  --gradient-electric: linear-gradient(135deg, #00F0FF 0%, #9B5DE5 50%, #FF2D92 100%);
+  
+  /* Noise texture overlay */
+  --noise-filter: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Dark mode variables */
+.dark {
+  --bg-primary: var(--deep-black);
+  --bg-secondary: var(--deep-slate);
+  --text-primary: #FAFAFA;
+  --text-secondary: #A8A29E;
+}
+
+/* Accessibility: Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Accessibility: Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: #0A0A0B;
+  color: white;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(ellipse 80% 80% at 50% -20%, rgba(155, 93, 229, 0.15), transparent),
+    radial-gradient(ellipse 60% 60% at 100% 0%, rgba(0, 240, 255, 0.1), transparent),
+    radial-gradient(ellipse 60% 60% at 0% 100%, rgba(255, 45, 146, 0.1), transparent);
+}
+
+/* Noise texture overlay for depth */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 1000;
+}
+
+/* Vibrant focus styles with neon glow */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #0A0A0B, 0 0 0 4px #00F0FF;
+}
+
+/* Skip link styles */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  background-color: #FF2D92;
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+/* Skeleton shimmer animation with neon colors */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+  }
+  100% {
+    transform: translateX(100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 45, 146, 0.2), transparent);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Survey card focus styles */
+.survey-card:focus-within {
+  box-shadow: 0 0 0 2px #0A0A0B, 0 0 0 4px #00F0FF;
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: var(--gradient-vivid);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-animated {
+  background: var(--gradient-vivid);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-xy 8s ease infinite;
+}
+
+/* Glass effect for cards */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(10, 10, 11, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Neon border glow effect */
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-vivid);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.neon-border:hover::before {
+  opacity: 1;
+}
+
+/* Animated background mesh */
+.bg-mesh-animated {
+  background: linear-gradient(-45deg, #FF2D92, #9B5DE5, #00F0FF, #B8FF00);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+/* Button press effect with color */
+.btn-press {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-press:hover {
+  transform: translate(-2px, -2px);
+}
+
+.btn-press:active {
+  transform: translate(2px, 2px);
+  box-shadow: none !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--deep-slate);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--neon-violet), var(--neon-pink));
+  border-radius: 0;
+  border: 2px solid var(--deep-slate);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(var(--neon-cyan), var(--neon-lime));
+}
+
+/* Selection styling */
+::selection {
+  background: var(--neon-pink);
+  color: white;
+}
+
+/* Floating shapes for background decoration */
+.floating-shape {
+  position: absolute;
+  border-radius: 0;
+  opacity: 0.6;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* Card hover lift effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* Animated underline effect */
+.underline-animated {
+  position: relative;
+  text-decoration: none;
+}
+
+.underline-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-vivid);
+  transition: width 0.3s ease;
+}
+
+.underline-animated:hover::after {
+  width: 100%;
+}
+
+/* Dotted grid pattern background */
+.bg-dotted {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Stripe pattern background */
+.bg-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.03) 10px,
+    rgba(255, 255, 255, 0.03) 20px
+  );
+}

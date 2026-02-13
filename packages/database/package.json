@@ -1,0 +1,22 @@
+{
+  "name": "@survey/database",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "generate": "drizzle-kit generate",
+    "migrate": "wrangler d1 migrations apply survey-db --local",
+    "migrate:prod": "wrangler d1 migrations apply survey-db",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.38.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "drizzle-kit": "^0.30.1",
+    "typescript": "^5.7.2",
+    "wrangler": "^3.100.0"
+  }
+}
