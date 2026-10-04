@@ -231,3 +231,11 @@ For issues and feature requests, please use GitHub Issues.
 ---
 
 **Built with Cloudflare Workers, D1, R2, and React**
+
+## Author
+
+Author: [rajivranjanmars](https://rajivranjana.in).
+
+## Dependency maintenance
+
+Use pnpm and the committed `pnpm-lock.yaml` for reproducible workspace installs.
