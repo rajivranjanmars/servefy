@@ -234,7 +234,7 @@ For issues and feature requests, please use GitHub Issues.
 
 ## Author
 
-Author: [rajivranjanmars](https://rajivranjana.in).
+Author: [Rajiv Ranjan](https://rajivranjan.in).
 
 ## Dependency maintenance
 
