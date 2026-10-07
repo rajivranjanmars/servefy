@@ -22,7 +22,7 @@
     "@survey/database": "workspace:*",
     "@survey/types": "workspace:*",
     "aws4fetch": "^1.0.20",
-    "better-auth": "^1.6.22",
+    "better-auth": "^1.7.7",
     "drizzle-orm": "^0.45.2",
     "hono": "^4.13.7",
     "nanoid": "^5.1.16",
