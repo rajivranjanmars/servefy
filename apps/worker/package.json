@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.721.0",
-    "@better-auth/expo": "^1.1.8",
+    "@better-auth/expo": "^1.7.7",
     "@survey/database": "workspace:*",
     "@survey/types": "workspace:*",
     "aws4fetch": "^1.0.20",
