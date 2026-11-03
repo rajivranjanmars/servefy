@@ -15,7 +15,7 @@ const submitResponseSchema = z.object({
     value: z.any(),
   })),
   respondentEmail: z.string().email().optional(),
-  metadata: z.record(z.unknown()).optional(),
+  metadata: z.record(z.string(), z.unknown()).optional(),
 });
 
 // List responses for a survey (owner only)
@@ -123,7 +123,7 @@ app.post('/survey/:surveyId/submit', optionalAuth, async (c) => {
   const parsed = submitResponseSchema.safeParse(body);
   
   if (!parsed.success) {
-    return c.json({ error: 'Invalid input', details: parsed.error.errors }, 400);
+    return c.json({ error: 'Invalid input', details: parsed.error.issues }, 400);
   }
   
   const data = parsed.data;
