@@ -56,7 +56,7 @@ app.post('/', requireAuth, async (c) => {
   const parsed = createSurveySchema.safeParse(body);
   
   if (!parsed.success) {
-    return c.json({ error: 'Invalid input', details: parsed.error.errors }, 400);
+    return c.json({ error: 'Invalid input', details: parsed.error.issues }, 400);
   }
   
   const data = parsed.data;
@@ -118,7 +118,7 @@ app.patch('/:id', requireAuth, async (c) => {
   const parsed = updateSurveySchema.safeParse(body);
   
   if (!parsed.success) {
-    return c.json({ error: 'Invalid input', details: parsed.error.errors }, 400);
+    return c.json({ error: 'Invalid input', details: parsed.error.issues }, 400);
   }
   
   const data = parsed.data;

@@ -31,7 +31,7 @@ const questionConfigSchema = z.object({
   scale: z.object({
     min: z.number(),
     max: z.number(),
-    labels: z.record(z.string()).optional(),
+    labels: z.record(z.string(), z.string()).optional(),
   }).optional(),
 });
 
@@ -112,7 +112,7 @@ app.post('/survey/:surveyId', requireAuth, async (c) => {
   const parsed = createQuestionSchema.safeParse(body);
   
   if (!parsed.success) {
-    return c.json({ error: 'Invalid input', details: parsed.error.errors }, 400);
+    return c.json({ error: 'Invalid input', details: parsed.error.issues }, 400);
   }
   
   const data = parsed.data;
@@ -171,7 +171,7 @@ app.patch('/:id', requireAuth, async (c) => {
   const parsed = updateQuestionSchema.safeParse(body);
   
   if (!parsed.success) {
-    return c.json({ error: 'Invalid input', details: parsed.error.errors }, 400);
+    return c.json({ error: 'Invalid input', details: parsed.error.issues }, 400);
   }
   
   const data = parsed.data;

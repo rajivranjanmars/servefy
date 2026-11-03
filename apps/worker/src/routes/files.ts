@@ -37,7 +37,7 @@ app.post('/upload-url/:surveyId', optionalAuth, async (c) => {
   
   const parsed = schema.safeParse(body);
   if (!parsed.success) {
-    return c.json({ error: 'Invalid input', details: parsed.error.errors }, 400);
+    return c.json({ error: 'Invalid input', details: parsed.error.issues }, 400);
   }
   
   const { fileName, fileType, fileSize, questionId } = parsed.data;
@@ -299,7 +299,7 @@ app.post('/bulk-delete', requireAuth, async (c) => {
   
   const parsed = schema.safeParse(body);
   if (!parsed.success) {
-    return c.json({ error: 'Invalid input', details: parsed.error.errors }, 400);
+    return c.json({ error: 'Invalid input', details: parsed.error.issues }, 400);
   }
   
   const { fileIds } = parsed.data;
